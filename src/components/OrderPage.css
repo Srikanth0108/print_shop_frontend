@@ -15,7 +15,8 @@
 html, body {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
-  height: 100%; /* Full height for body */
+  height: 100%; 
+  overflow-y: auto;/* Full height for body */
 }
 
 /* Header Styles */
