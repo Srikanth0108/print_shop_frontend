@@ -57,7 +57,7 @@ html, body {
   padding: 20px 20px 0px 20px;
   background-color: #1f1f1f; 
   color: #fff;
-  min-height: calc(100vh - 100px); /* Adjust for the height of the fixed header */
+  height: 770px; /* Adjust for the height of the fixed header */
   display: flex;
   flex-direction: column;
   border-radius: 20px; 
@@ -66,6 +66,11 @@ html, body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); 
   transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
   margin-top: 250px; /* This margin accounts for the fixed header height */
+}
+.form-container:hover {
+ /* Active color */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.7); /* Hover shadow */
 }
 
 .order-form {
@@ -166,12 +171,18 @@ html, body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .order-footer p {
   font-size: 16px;
   font-weight: bold;
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: ease-in;
+}
+.order-footer p:hover{
+  scale:1.5;
 }
 
 .payment-btn {
