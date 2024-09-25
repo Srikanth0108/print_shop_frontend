@@ -1,0 +1,122 @@
+/* Preview Page Container */
+.preview-page-container {
+  background-color: #0d0d0d; /* Dark background */
+  color: #eaeaea; /* Light text color */
+  width: 95vw; /* Full width with some margin */
+  height: 90vh; /* Set a maximum height */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  padding: 20px; /* Padding for spacing */
+  overflow: auto; /* Prevent scrolling */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+/* Header */
+.preview-header {
+  text-align: left; /* Align header text to the left */
+}
+
+.preview-header h1 {
+  font-size: 2rem; /* Header font size */
+  color: #ff6b6b; /* Accent color */
+  margin: 0; /* No margin */
+}
+
+/* Details Section */
+.preview-details {
+  background-color: #1f1f1f; /* Darker background for details */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding for details */
+  margin-top: 20px; /* Space above details */
+  flex: 1; /* Allow this section to grow */
+  display: flex;
+  flex-direction: column; /* Stack details vertically */
+}
+
+/* Order Details Header */
+.preview-details h2 {
+  font-size: 1.5rem; /* Font size for order details */
+  margin: 0 0 10px 0;
+  font-family: bold; /* Bottom margin for spacing */
+}
+
+/* Total Amount */
+.preview-details p {
+  font-size: 1.2rem; /* Font size for details */
+  margin: 5px 0; /* Margin for spacing */
+}
+.preview-details h3{
+transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: ease-in;
+}
+.preview-details h3:hover{
+ /* Lighter red on hover */
+/* Lift effect */
+  color: #ff6b6b; /* Accent color */
+}
+
+/* Documents Section */
+.document-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow documents to wrap to the next line */
+  justify-content: center; /* Center items horizontally */
+  margin-top: 10px; /* Space above document list */
+}
+
+/* Document Item */
+.document-item {
+  margin: 10px; /* Margin for document items */
+  display: flex;
+  flex-direction: column; /* Stack document name and image */
+  align-items: center; /* Center items vertically */
+}
+
+/* Document Preview Image */
+.document-preview {
+  width: 100%; /* Set width to 100% to utilize available space */
+  max-width: 120px; /* Set a maximum width for the preview image */
+  border-radius: 8px; /* Rounded corners for images */
+  margin-top: 5px;
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: ease-in; /* Space between text and image */
+}
+.document-preview:hover{
+     background-color: #ff6b6b; /* Lighter red on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5); 
+  scale:1.5;/* Hover shadow */
+}
+
+/* Comments Section */
+.preview-details h3 {
+  margin: 15px 0 5px 0; /* Margin for comments section */
+  font-size: 1.3rem; /* Font size for comments header */
+}
+
+/* Footer Section */
+.preview-footer {
+  display: flex;
+  justify-content: center; /* Center the button */
+  margin-top: 20px; /* Space above the footer */
+}
+
+/* Payment Button */
+.payment-btn {
+  background-color: #f94144; /* Vibrant red */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Button padding */
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Font size for button */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Animation effects */
+}
+
+.payment-btn:hover {
+  background-color: #ff6b6b; /* Lighter red on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5); /* Hover shadow */
+}

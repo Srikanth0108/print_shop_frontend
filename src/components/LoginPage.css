@@ -1,0 +1,206 @@
+/* Main container */
+body {
+  background-color: #0d0d0d; /* Deep dark background for contrast */
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.user-type-toggle {
+  display: flex;
+  justify-content: space-around; /* Changed to space-around for better spacing */
+  width: 350px;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-in-out; /* Fading animation on load */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.user-type-toggle button {
+  background-color: #f94144; /* Vibrant red */
+  border: none;
+  color: white;
+  padding: 15px 35px;
+  cursor: pointer;
+  font-size: 18px;
+  flex: 1; /* Allows buttons to take equal space */
+  margin: 0 5px; /* Add some margin between buttons */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.user-type-toggle button.active {
+  background-color: #ff6b6b; /* Active color */
+  transform: scale(1.05); /* Slight enlargement to show active state */
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.7); /* Glowing effect */
+}
+
+.user-type-toggle button:not(.active):hover {
+  opacity: 0.85;
+  background-color: #f94144;
+  transform: translateY(-5px); /* Raised hover animation */
+  box-shadow: 0 10px 20px rgba(249, 65, 68, 0.5); /* Hover shadow */
+}
+
+.login-form-container {
+  background-color: #1f1f1f; /* Dark gray form background */
+  padding: 30px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Deeper shadow for a 3D effect */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+  animation: slideUp 0.8s ease-out; /* Slide in animation */
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-form-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  background-color: #272727; /* Slightly lighter on hover */
+}
+
+.input-group {
+  margin-bottom: 40px;
+  text-align:center;
+}
+.s1{
+  margin-bottom:23px;
+  text-align:center;
+}
+
+.input-group input {
+  width: 90%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background-color: #121212;
+  color: #fff;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6); /* Red glow effect on focus */
+  border: 1px solid #ff6b6b;
+  background-color: #1e1e1e; /* Slightly brighter background on focus */
+}
+
+.login-actions {
+  margin-top: 20px;
+}
+
+.login-actions .login-button {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-actions .login-button:hover {
+  background-color: #ff6b6b;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.7); /* Glow effect on hover */
+}
+
+.forgot-password {
+  margin-top: 15px;
+  font-size: 14px;
+  animation: fadeIn 1.2s ease-in;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 15px;
+  animation: fadeIn 1.4s ease-in;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.link-button:hover {
+  color: #ffd700; /* Highlight the link in gold on hover */
+  text-decoration: none;
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+@media (max-width: 768px) {
+  .user-type-toggle {
+    width: 100%;
+  }
+
+  .login-form-container {
+    width: 90%;
+  }
+}
+/* Shop details styled like other input fields */
+.shop-details-textarea {
+  width: 90%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background-color: #121212;
+  color: #fff;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.3s ease;
+  resize: none; /* Disable resizing */
+}
+
+.shop-details-textarea:focus {
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6); /* Red glow effect on focus */
+  border: 1px solid #ff6b6b;
+  background-color: #1e1e1e; /* Slightly brighter background on focus */
+}
+.error-message {
+  color: red; /* Set the text color to red */ /* Adjust the font size if needed */ /* Add some space below the error message */
+  font-weight: bold; /* Make the error text bold for emphasis */
+}
+.login-form-container{
+  padding-top: 10px;
+}

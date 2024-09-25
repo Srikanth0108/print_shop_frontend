@@ -1,0 +1,89 @@
+.profile-dropdown {
+  position: relative; /* Ensure the dropdown is positioned relative to its parent */
+}
+
+.profile-icon {
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.profile-image {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  border-radius: 50%; /* Make image circular */
+  object-fit: cover; /* Ensure image covers the circle */
+  transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.profile-image:hover {
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.dropdown-menu {
+  position: absolute; /* Position dropdown absolutely */
+  top: 100%; /* Position below the profile icon */
+  right: 0; /* Align to the right */
+  background-color: #0d0d0d; /* Match background color */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  border-radius: 12px; /* Rounded corners */
+  z-index: 1000; /* Ensure it's above other elements */
+  animation: fadeIn 0.3s ease; /* Fade in animation */
+  opacity: 0; /* Start as invisible */
+  transform: translateY(-10px); /* Start above */
+}
+
+.dropdown-menu.show {
+  opacity: 1; /* Make it visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start from invisible */
+    transform: translateY(-10px); /* Start above */
+  }
+  to {
+    opacity: 1; /* Fade to visible */
+    transform: translateY(0); /* Move to original position */
+  }
+}
+
+.dropdown-menu a,
+.logout-button {
+  display: block; /* Block display for links */
+  padding: 12px 20px; /* Padding for links */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  width: 100%; /* Full width for buttons */
+  border: none; /* Remove border from button */
+  background: none; /* No background for button */
+  text-align: left; /* Align text to the left */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.dropdown-menu a:hover,
+.logout-button:hover {
+  background-color: #ff6b6b; /* Highlight on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+  transform: translateY(-2px); /* Slightly lift on hover */
+}
+
+/* Add a font style for links */
+.dropdown-menu a,
+.logout-button {
+  font-family: 'Poppins', sans-serif; /* Set the font family */
+  font-size: 16px; /* Adjust font size */
+  border-radius: 8px; /* Rounded edges for links */
+}
+
+/* Optional: Add transition effect when hovering over links */
+.dropdown-menu a:hover,
+.logout-button:hover {
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+}
+
+/* Additional styles for better accessibility */
+.dropdown-menu a:focus,
+.logout-button:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.6); /* Add focus outline for accessibility */
+}

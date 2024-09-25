@@ -1,0 +1,244 @@
+.order-input-group.upload-section {
+  margin-bottom: 5px; /* Reduced margin between Upload Document and Comments */
+}
+
+.order-input-group.comments {
+  margin-top: 5px; /* Reduced margin above the Comments section */
+}
+
+/* Updated code */
+/* Global Styles */
+* {
+  box-sizing: border-box; /* Ensure padding and borders are included in the total width/height */
+}
+
+html, body {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  height: 100%; /* Full height for body */
+}
+
+/* Header Styles */
+.order-header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space items evenly */
+  align-items: center; /* Center items vertically */
+  padding: 0 20px; 
+  position: fixed; /* Fixed position */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  height: 60px; /* Define a fixed height */
+  background-color: #0d0d0d; /* Match the background */
+  z-index: 1000; /* Ensure header is above other elements */
+  transition: none; /* Remove transition for immediate rendering */
+}
+
+.order-title {
+  color: #ff6b6b; /* Title color */
+  margin: 0; /* Remove default margin */
+  font-size: 2.5rem; /* Larger font size for title */
+  font-weight: bold; /* Bold title */
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.shop-name {
+  color: #fff; /* Color for shop name */
+  font-size: 1.2rem; /* Adjust size as needed */
+}
+
+.profile-dropdown {
+  position: relative; /* Position for profile dropdown */
+  /* Add any additional styling for profile dropdown if necessary */
+}
+
+.form-container {
+  padding: 20px 20px 0px 20px;
+  background-color: #1f1f1f; 
+  color: #fff;
+  min-height: calc(100vh - 100px); /* Adjust for the height of the fixed header */
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px; 
+  width: 90vw;  
+  max-width: 100%;  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); 
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+  margin-top: 250px; /* This margin accounts for the fixed header height */
+}
+
+.order-form {
+  color: white;
+  padding: 20px;
+  width: 100%;  /* Set the form to take full width */
+  max-width: 100%; /* Remove restriction to make it full width */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.order-input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.order-input-group label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+.order-input-group input[type="text"],
+.order-input-group input[type="number"],
+.order-input-group select,
+.order-input-group textarea {
+  width: 100%;
+  max-width: 150px;
+  padding: 12px; /* Increased padding for better aesthetics */
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background-color: #121212;
+  color: #fff;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.3s ease;
+}
+
+.order-input-group input:focus,
+.order-input-group select:focus,
+.order-input-group textarea:focus {
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6); /* Red glow effect on focus */
+  border: 1px solid #ff6b6b;
+  background-color: #1e1e1e; /* Brighter background on focus */
+}
+
+.order-input-group input[type="checkbox"],
+.order-input-group input[type="radio"] {
+  margin-right: 10px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.small-input {
+  width: 80px;
+}
+
+.upload-section {
+  display: flex;
+  gap: 10px;
+}
+
+.upload-btn, .add-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #f94144; /* Vibrant red */
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-btn:hover, .add-btn:hover {
+  background-color: #ff6b6b; /* Active color */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(249, 65, 68, 0.5); /* Hover shadow */
+}
+
+.note {
+  font-size: 12px;
+  color: white;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.order-footer p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.payment-btn {
+  background-color: #f94144; /* Vibrant red */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-btn:hover {
+  background-color: #ff6b6b; /* Active color */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.7); /* Hover shadow */
+}
+/* Style for the upload section */
+.upload-section {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 10px;
+}
+
+/* Style for the file input */
+.upload-input {
+  display: none; /* Hide the default file input */
+}
+
+/* Customize the visible label for the file input */
+.upload-label {
+  display: inline-block;
+  padding: 12px 16px; /* Add padding for aesthetics */
+  background-color: #ff6b6b; /* Background color */
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  width: auto; /* Ensure it adapts to the content */
+}
+
+/* Style the upload button */
+.upload-label:hover {
+  background-color: #f94144; /* Darker red on hover */
+  transform: translateY(-2px); /* Slightly lift effect */
+}
+
+/* Plus icon styling */
+.add-btn {
+  padding: 5px 10px 5px 10px; /* Padding for the plus button */
+  font-size: 20px; /* Adjust size for the plus icon */
+  color: white; /* Icon color */
+  background-color: #f94144; /* Background color */
+  border: none;
+  border-radius: 100%; /* Circular shape */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the plus button */
+.upload-section {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  align-items: center; /* Align items vertically */
+  gap: 10px;
+}
+.upload-input {
+  display: none; /* Hide the default file input */
+}

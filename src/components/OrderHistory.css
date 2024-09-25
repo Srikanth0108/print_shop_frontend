@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box; /* Ensure padding and borders are included in the total width/height */
+}
+
+html, body {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  height: 100%; /* Full height for body */
+}
+
+.order-history-container {
+  text-align: center;
+  background-color: #0d0d0d; /* Deep dark background */
+  width: 100%; /* Full width */
+  animation: fadeIn 0.5s ease-in; /* Fade in animation */
+  height: calc(100vh - 60px); /* Full height of viewport minus header height */
+  padding-top: 60px; /* Match the header height */
+}
+
+.header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space items evenly */
+  align-items: center; /* Center items vertically */
+  padding: 0 20px; 
+  position: fixed; /* Fixed position */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  height: 60px; /* Define a fixed height */
+  background-color: #0d0d0d; /* Match the background */
+  z-index: 1000; /* Ensure header is above other elements */
+  transition: none; /* Remove transition for immediate rendering */
+}
+
+.order-history-title {
+  color: #ff6b6b; /* Title color */
+  margin: 0; /* Remove default margin */
+  font-size: 2.5rem; /* Larger font size for title */
+  font-weight: bold; /* Bold title */
+  cursor: pointer; /* Position it from the top */
+}
+
+.search-bar {
+  position: absolute; /* Use absolute positioning */
+  top: 60px; /* Position below the header */
+  left: 50%; /* Align center horizontally */
+  transform: translateX(-50%); /* Center align */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center the search bar */
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  width: 400px; /* Fixed width for search input */
+}
+
+.search-input input {
+  padding: 12px;
+  border-radius: 8px; /* Rounded edges */
+  border: 1px solid #2a2a2a;
+  width: 100%; /* Full width for the input field */
+  background-color: #121212;
+  color: #fff;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.3s ease;
+}
+
+.search-input input:focus {
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+  border: 1px solid #ff6b6b;
+  background-color: #1e1e1e; /* Brightened on focus */
+}
+
+.profile-dropdown {
+  position: relative; /* Change to relative for proper alignment */
+}
+
+
+
+/* Keyframes for fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
