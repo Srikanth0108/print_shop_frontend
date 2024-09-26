@@ -15,7 +15,8 @@
 }
 
 .profile-image:hover {
-  transform: scale(1.1); /* Slight enlargement on hover */
+  transform: scale(1.1); 
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.7);/* Slight enlargement on hover */
 }
 
 .dropdown-menu {
