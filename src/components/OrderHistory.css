@@ -88,7 +88,7 @@ html, body {
     transform: translateY(0);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .search-bar {
     width: 100%; /* Make the search bar take full width */
     padding: 10px; /* Add padding for breathing space */

@@ -12,7 +12,7 @@ html, body {
   text-align: center;
   background-color: #0d0d0d; /* Deep dark background */
   width: 100%; /* Full width */
-  height: calc(100vh - 60px); /* Full height of viewport minus header height */
+  height: calc(100vh - 100px); /* Full height of viewport minus header height */
   padding-top: 60px; /* Match the header height */
   /* Remove animation if it causes flickering */
 }
@@ -137,7 +137,7 @@ html, body {
     transform: translateY(0);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .search-bar {
     width: 100%; /* Make the search bar take full width */
     padding: 10px; /* Add padding for breathing space */

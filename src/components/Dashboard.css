@@ -86,7 +86,7 @@ html, body {
     transform: translateY(0);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .shopkeeper-search-bar {
     width: 100%; /* Make the search bar take full width on mobile */
     padding: 10px; /* Add padding for spacing */

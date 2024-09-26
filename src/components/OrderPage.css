@@ -57,7 +57,7 @@ html, body {
   padding: 20px 20px 0px 20px;
   background-color: #1f1f1f; 
   color: #fff;
-  height: calc(100vh-100px); /* Adjust for the height of the fixed header */
+  height: auto; /* Adjust for the height of the fixed header */
   display: flex;
   flex-direction: column;
   border-radius: 20px; 
@@ -65,7 +65,8 @@ html, body {
   max-width: 100%;  
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); 
   transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
-  margin-top: 250px; /* This margin accounts for the fixed header height */
+  position: relative; /* Use relative positioning */
+  top: 210px; /* Push it down by the same height as the header *//* This margin accounts for the fixed header height */
 }
 .form-container:hover {
  /* Active color */
@@ -257,9 +258,9 @@ html, body {
 /* Mobile Styles */
 @media (max-width: 600px) {
   .form-container {
-    width: 100%; /* Full width on small screens */
-    margin-top: 250px; /* Adjust margin for small screens */
-    padding: 10px; /* Reduce padding for smaller screens */
+    width: 100%; /* Full width on small screens */ /* Adjust margin for small screens */
+    padding: 10px;
+    top:210px; /* Reduce padding for smaller screens */
   }
 
   .order-input-group input[type="text"],
