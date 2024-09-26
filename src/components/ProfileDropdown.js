@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import "./ProfileDropdown.css";
-import logoImage from "./logo.png";
+import logoImage from "./abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai.jpg";
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);

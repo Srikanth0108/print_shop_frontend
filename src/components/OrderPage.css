@@ -145,8 +145,7 @@ html, body {
   display: flex;
   gap: 10px;
 }
-
-.upload-btn, .add-btn {
+.upload-btn, .add-btn ,.delete-btn{
   padding: 8px 12px;
   font-size: 14px;
   background-color: #f94144; /* Vibrant red */
@@ -157,7 +156,8 @@ html, body {
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.upload-btn:hover, .add-btn:hover {
+
+.upload-btn:hover, .add-btn:hover ,.delete-btn:hover{
   background-color: #ff6b6b; /* Active color */
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(249, 65, 68, 0.5); /* Hover shadow */

@@ -41,8 +41,16 @@ const OrderPage = () => {
   const addUploadField = () => {
     if (documents.length < 10) {
       setDocuments([...documents, ""]);
+      setButtonText("Calculate Total");
     }
   };
+  const handleDeleteField = (index) => {
+    const newDocuments = documents.filter((_, i) => i !== index);
+    setDocuments(newDocuments);
+    setInputsChanged(true);
+    setButtonText("Calculate Total"); // Set button text to "Calculate Total" on input change
+  };
+
 
   const handleFileChange = (index, event) => {
     const newDocuments = [...documents];
@@ -310,12 +318,22 @@ const OrderPage = () => {
             <label>Upload Document</label>
             <div className="upload-section">
               {documents.map((doc, index) => (
-                <input
-                  key={index}
-                  type="file"
-                  onChange={(e) => handleFileChange(index, e)}
-                  accept=".pdf,.doc,.docx,.jpg,.png"
-                />
+                <div key={index} className="upload-field">
+                  <input
+                    type="file"
+                    onChange={(e) => handleFileChange(index, e)}
+                    accept=".pdf,.doc,.docx,.jpg,.png"
+                  />
+                  {index === documents.length - 1 && documents.length > 1 && (
+                    <button
+                      type="button"
+                      className="delete-btn"
+                      onClick={() => handleDeleteField(index)}
+                    >
+                     Del
+                    </button>
+                  )}
+                </div>
               ))}
               <button
                 type="button"
