@@ -254,3 +254,41 @@ html, body {
 .upload-input {
   display: none; /* Hide the default file input */
 }
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .form-container {
+    width: 100%; /* Full width on small screens */
+    margin-top: 250px; /* Adjust margin for small screens */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .order-input-group input[type="text"],
+  .order-input-group input[type="number"],
+  .order-input-group select,
+  .order-input-group textarea {
+    max-width: 100%; /* Ensure inputs take full width of container */
+    padding: 10px; /* Adjust padding for better fit */
+    font-size: 14px; /* Slightly smaller font size */
+  }
+
+  .small-input {
+    width: 100%; /* Full width for smaller inputs */
+  }
+
+  .upload-section {
+    flex-wrap: wrap; /* Wrap elements to the next line */
+    justify-content: flex-start; /* Align items to start */
+    gap: 5px; /* Smaller gaps on small screens */
+  }
+
+  .upload-btn, .add-btn {
+    font-size: 12px; /* Smaller font for buttons */
+    padding: 6px 10px; /* Adjust padding */
+  }
+
+  .payment-btn {
+    width: 40%; /* Full width for the button */
+    font-size: 14px; /* Adjust font size */
+    padding: 8px 15px; /* Adjust padding */
+  }
+}
