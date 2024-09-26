@@ -82,7 +82,8 @@ html, body {
   gap: 20px; /* Space between cards */
   animation: fadeIn 0.5s ease-in; /* Fade in animation */
   height: calc(100% - 60px); /* Full height minus header height */
-  padding-top: 20px; /* Space for search bar */
+  padding-top: 20px; 
+  margin-top: 20px;/* Space for search bar */
 }
 
 .shop-card {
