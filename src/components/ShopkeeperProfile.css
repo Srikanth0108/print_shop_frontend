@@ -117,3 +117,38 @@ label {
     opacity: 1;
   }
 }
+@media (max-width: 768px) {
+  /* Adjust the profile box to fit smaller screens */
+  .shopkeeper-profile-box {
+    width: 100%; /* Reduce the width for mobile */
+    padding: 20px; /* Reduce padding */
+    margin-top: 40px; /* Less margin at the top */
+  }
+
+  /* Adjust form group for mobile view */
+  .form-group {
+     /* Align items to start */
+    margin-bottom: 15px; /* Reduce margin */
+  }
+
+  label {
+    width: 100%; /* Full width label */
+    margin-bottom: 5px; /* Add space below label */
+    text-align: left; /* Keep label text aligned to the left */
+  }
+
+  .profile-input,
+  .profile-textarea {
+    width: 100%; /* Full width for input and textarea */
+  }
+
+  /* Adjust save button for mobile */
+  .save-button {
+    font-size: 0.9rem; /* Slightly smaller text size */
+    padding: 10px; /* Adjust padding */
+  }
+
+  .error-message {
+    font-size: 0.9rem; /* Slightly smaller error message text */
+  }
+}

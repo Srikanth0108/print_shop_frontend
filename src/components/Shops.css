@@ -137,3 +137,21 @@ html, body {
     transform: translateY(0);
   }
 }
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%; /* Make the search bar take full width */
+    padding: 10px; /* Add padding for breathing space */
+    top: 60px; /* Keep it below the header */
+    left: 0; /* Align to the left */
+    transform: none; /* Remove the center alignment transformation */
+  }
+
+  .search-input {
+    width: 90%; /* Adjust search input width to 90% */
+  }
+
+  .search-input input {
+    width: 100%; /* Ensure the input takes full width */
+    font-size: 14px; /* Slightly reduce font size for smaller screens */
+  }
+}

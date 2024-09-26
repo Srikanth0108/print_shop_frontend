@@ -86,3 +86,21 @@ html, body {
     transform: translateY(0);
   }
 }
+@media (max-width: 768px) {
+  .shopkeeper-search-bar {
+    width: 100%; /* Make the search bar take full width on mobile */
+    padding: 10px; /* Add padding for spacing */
+    top: 60px; /* Keep it below the header */
+    left: 0; /* Align to the left */
+    transform: none; /* Remove centering transform */
+  }
+
+  .shopkeeper-search-input {
+    width: 90%; /* Adjust search input width for smaller screens */
+  }
+
+  .shopkeeper-search-input input {
+    width: 100%; /* Ensure the input field takes full width */
+    font-size: 14px; /* Slightly reduce font size for mobile readability */
+  }
+}
