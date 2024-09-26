@@ -54,9 +54,11 @@ const Shops = () => {
               <h3>{shop.name}</h3>
               <p>{shop.description}</p>
               <p>{shop.details}</p>
+              <span>
               <Link to={`/order/${shop.name}`}>
                 <button className="order-btn">Order</button>
               </Link>
+              </span>
             </div>
           ))
         ) : (
