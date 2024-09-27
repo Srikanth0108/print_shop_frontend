@@ -145,6 +145,10 @@ html, body {
   display: flex;
   gap: 10px;
 }
+.upload-field{
+  display: flex;
+  align-items: center;
+}
 .upload-btn, .add-btn ,.delete-btn{
   padding: 8px 12px;
   font-size: 14px;
@@ -155,7 +159,10 @@ html, body {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.delete-btn{
+  font-size: 12px;
+  padding: 4px 6px;
+}
 
 .upload-btn:hover, .add-btn:hover ,.delete-btn:hover{
   background-color: #ff6b6b; /* Active color */
@@ -251,7 +258,7 @@ html, body {
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap onto the next line */
   align-items: center; /* Align items vertically */
-  gap: 10px;
+  gap: 7px;
 }
 .upload-input {
   display: none; /* Hide the default file input */

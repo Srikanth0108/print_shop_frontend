@@ -204,3 +204,16 @@ body {
 .login-form-container{
   padding-top: 10px;
 }
+.password-field {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 10px;
+  background-size: 10px 10px; /* Adjust icon size */
+}

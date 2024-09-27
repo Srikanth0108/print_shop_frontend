@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./OrderPage.css";
 import ProfileDropdown from "./ProfileDropdown";
+import del from "./icons8-delete-20.png";
 
 const OrderPage = () => {
   const { shopName } = useParams();
@@ -330,7 +331,7 @@ const OrderPage = () => {
                       className="delete-btn"
                       onClick={() => handleDeleteField(index)}
                     >
-                     Del
+                      <img src={del} alt="del-btn" />
                     </button>
                   )}
                 </div>
