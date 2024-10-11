@@ -16,7 +16,7 @@ html, body {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
   height: 100%; 
-  overflow-y: auto;/* Full height for body */
+  overflow: auto;/* Full height for body */
 }
 
 /* Header Styles */
@@ -262,6 +262,9 @@ html, body {
 }
 .upload-input {
   display: none; /* Hide the default file input */
+}
+body{
+  overflow: auto;
 }
 /* Mobile Styles */
 @media (max-width: 600px) {

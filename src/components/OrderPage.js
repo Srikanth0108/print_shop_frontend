@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./OrderPage.css";
 import ProfileDropdown from "./ProfileDropdown";
 import del from "./icons8-delete-20.png";
+import { useLocation } from "react-router-dom";
 
 const OrderPage = () => {
   const { shopName } = useParams();
@@ -20,7 +21,9 @@ const OrderPage = () => {
   const [total, setTotal] = useState(0);
   const [buttonText, setButtonText] = useState("Calculate Total");
   const [inputsChanged, setInputsChanged] = useState(false);
-
+  const location = useLocation(); // Get location object
+  const username = location.state?.username;
+   console.log("Username in Shops:", username);
   const grayscalePagePrices = {
     A1: 80,
     A2: 50,
@@ -130,7 +133,22 @@ const OrderPage = () => {
         // If inputs have changed, recalculate total
         calculateTotal(); // Recalculate total
       } else {
-        navigate("/preview", { state: { total, documents } });
+        const formData = {
+          username,
+          shopName,
+          copies,
+          pageType,
+          pagesToPrint,
+          specificPages,
+          orientation,
+          binding,
+          documents,
+          comments,
+          grayscale,
+          frontPagePrint,
+          total,
+        };
+        navigate("/preview", { state: {state:formData } });
       }
     }
   };

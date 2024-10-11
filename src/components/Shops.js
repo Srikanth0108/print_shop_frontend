@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown"; // Import ProfileDropdown
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "./Shops.css"; // Shops specific styling
-
+import { useLocation } from "react-router-dom";
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const location = useLocation(); // Get location object
+  const username = location.state?.username;
   // Fetch shop data from backend
   useEffect(() => {
     const fetchShopData = async () => {
@@ -51,10 +52,11 @@ const Shops = () => {
           filteredShops.map((shop, index) => (
             <div key={index} className="shop-card">
               <h3>{shop.username}</h3> {/* Adjusted from shop.name */}
-              <p>{shop.shop_description}</p> {/* Adjusted from shop.description */}
+              <p>{shop.shop_description}</p>{" "}
+              {/* Adjusted from shop.description */}
               <p>{shop.shop_details}</p> {/* Adjusted from shop.details */}
               <span>
-                <Link to={`/order/${shop.username}`}>
+                <Link to={`/order/${shop.username}`} state={{ username }}>
                   <button className="order-btn">Order</button>
                 </Link>
               </span>

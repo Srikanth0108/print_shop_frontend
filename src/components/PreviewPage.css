@@ -31,7 +31,10 @@
   margin-top: 20px; /* Space above details */
   flex: 1; /* Allow this section to grow */
   display: flex;
-  flex-direction: column; /* Stack details vertically */
+  flex-direction: column;
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: ease-in; /* Stack details vertically */
 }
 
 /* Order Details Header */
@@ -46,15 +49,11 @@
   font-size: 1.2rem; /* Font size for details */
   margin: 5px 0; /* Margin for spacing */
 }
-.preview-details h3{
-transition-duration: 300ms;
-  transition-property: all;
-  transition-timing-function: ease-in;
-}
-.preview-details h3:hover{
+
+.preview-details:hover{
  /* Lighter red on hover */
 /* Lift effect */
-  color: #ff6b6b; /* Accent color */
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5); /* Hover shadow *//* Accent color */
 }
 
 /* Documents Section */
@@ -74,7 +73,7 @@ transition-duration: 300ms;
 }
 
 /* Document Preview Image */
-.document-preview {
+.document-preview{
   width: 100%; /* Set width to 100% to utilize available space */
   max-width: 120px; /* Set a maximum width for the preview image */
   border-radius: 8px; /* Rounded corners for images */
@@ -88,6 +87,17 @@ transition-duration: 300ms;
   transform: translateY(-2px); /* Lift effect */
   box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5); 
   scale:1.5;/* Hover shadow */
+}
+span{
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: ease-in; /* Space between text and image */
+}
+
+span:hover{
+/* Lighter red on hover */
+ /* Lift effect */
+  color: #ff6b6b; /* Lighter red on hover */
 }
 
 /* Comments Section */

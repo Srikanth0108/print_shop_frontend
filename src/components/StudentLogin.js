@@ -16,7 +16,7 @@ const StudentLogin = ({ navigate, onLogin }) => {
     try {
       const data = await studentLogin({ username, password });
       onLogin(data.user); // Update the logged-in state with user data
-      navigate("/shops"); // Navigate to Shops page
+      navigate("/shops", { state: { username:data.user.username } }); // Navigate to Shops page
     } catch (err) {
       setError(err.message || "Invalid credentials. Please try again.");
     }

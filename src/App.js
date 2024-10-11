@@ -12,11 +12,11 @@ import ForgotPassword from "./components/ForgotPassword";
 import Shops from "./components/Shops";
 import OrderPage from "./components/OrderPage";
 import PreviewPage from "./components/PreviewPage";
-import PaymentPage from "./components/PaymentPage";
 import OrderHistory from "./components/OrdersHistory";
 import Dashboard from "./components/Dashboard";
 import ShopkeeperProfile from "./components/ShopkeeperProfile";
 import ResetPassword from "./components/ResetPassword";
+import ThankYouPage from "./components/ThankYouPage";
 import "./App.css";
 
 function App() {
@@ -58,10 +58,10 @@ function App() {
               }
             />
             <Route
-              path="/payment"
+              path="/thank-you-page"
               element={
                 <PrivateRoute>
-                  <PaymentPage />
+                  <ThankYouPage />
                 </PrivateRoute>
               }
             />
