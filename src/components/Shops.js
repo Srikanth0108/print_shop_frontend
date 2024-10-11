@@ -1,34 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown"; // Import ProfileDropdown
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "./Shops.css"; // Shops specific styling
 
 const Shops = () => {
-  const shopData = [
-    {
-      name: "Star SRM DTP",
-      description: "Your one-stop shop for vibrant, flawless prints!",
-      details:
-        "Shop no :240, Ground Floor, University Building, SRM Nagar, Kattangulathur.",
-    },
-    {
-      name: "MM SRM DTP",
-      description: "Precision printing for all your creative needs!",
-      details:
-        "Shop no :254, First Floor, University Building, SRM Nagar, Kattangulathur.",
-    },
-    {
-      name: "Tech SRM DTP",
-      description: "Cutting-edge technology for perfect prints every time!",
-      details:
-        "Shop no :01, First Floor, Tech Park, SRM Nagar, Kattangulathur.",
-    },
-  ];
-
+  const [shopData, setShopData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Fetch shop data from backend
+  useEffect(() => {
+    const fetchShopData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/shops"); // Replace with your actual API endpoint
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setShopData(data); // Assuming data is an array of shop objects
+      } catch (error) {
+        console.error('Error fetching shop data:', error);
+      }
+    };
+
+    fetchShopData();
+  }, []);
+
+  // Filter shops based on search term
   const filteredShops = shopData.filter((shop) =>
-    shop.name.toLowerCase().includes(searchTerm.toLowerCase())
+    shop.username.toLowerCase().includes(searchTerm.toLowerCase()) // Adjust based on your data structure
   );
 
   return (
@@ -51,13 +50,13 @@ const Shops = () => {
         {filteredShops.length > 0 ? (
           filteredShops.map((shop, index) => (
             <div key={index} className="shop-card">
-              <h3>{shop.name}</h3>
-              <p>{shop.description}</p>
-              <p>{shop.details}</p>
+              <h3>{shop.username}</h3> {/* Adjusted from shop.name */}
+              <p>{shop.shop_description}</p> {/* Adjusted from shop.description */}
+              <p>{shop.shop_details}</p> {/* Adjusted from shop.details */}
               <span>
-              <Link to={`/order/${shop.name}`}>
-                <button className="order-btn">Order</button>
-              </Link>
+                <Link to={`/order/${shop.username}`}>
+                  <button className="order-btn">Order</button>
+                </Link>
               </span>
             </div>
           ))

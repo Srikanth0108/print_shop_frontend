@@ -1,0 +1,110 @@
+/* Main container */
+body {
+  background-color: #0d0d0d; /* Deep dark background for contrast */
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: auto;
+}
+
+.login-form-container {
+  background-color: #1f1f1f; /* Dark gray form background */
+  padding: 30px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Deeper shadow for a 3D effect */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+  animation: slideUp 0.8s ease-out; /* Slide in animation */
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-form-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  background-color: #272727; /* Slightly lighter on hover */
+}
+
+.input-group {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.input-group input,
+.shop-details-textarea {
+  width: 90%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background-color: #121212;
+  color: #fff;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group input:focus,
+.shop-details-textarea:focus {
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6); /* Red glow effect on focus */
+  border: 1px solid #ff6b6b;
+  background-color: #1e1e1e; /* Slightly brighter background on focus */
+}
+
+.error-message {
+  color: red; /* Set the text color to red */
+  font-weight: bold; /* Make the error text bold for emphasis */
+  margin-bottom: 20px; /* Add space below the error message */
+}
+
+.login-actions {
+  margin-top: 20px;
+}
+
+.login-actions .login-button {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-actions .login-button:hover {
+  background-color: #ff6b6b;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.7); /* Glow effect on hover */
+}
+
+/* Shop details styled like other input fields */
+.shop-details-textarea {
+  resize: none; /* Disable resizing */
+}
+
+/* Additional styles */
+.p {
+  margin-top: 400px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .login-form-container {
+    width: 100%;
+  }
+}

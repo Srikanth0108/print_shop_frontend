@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+// src/LoginPage.jsx
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import StudentLogin from "./StudentLogin";
 import ShopkeeperLogin from "./ShopkeeperLogin";
+import { AuthContext } from "./context/AuthContext";
 import "./LoginPage.css";
 
-const LoginPage = ({ onLogin }) => {
-  // Accept onLogin prop
+const LoginPage = () => {
   const [userType, setUserType] = useState("student");
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = (userData) => {
+    login(userData); // Update the authentication state
+  };
 
   return (
     <div className="login-container">
@@ -27,9 +33,9 @@ const LoginPage = ({ onLogin }) => {
       </div>
 
       {userType === "student" ? (
-        <StudentLogin navigate={navigate} onLogin={onLogin} /> // Pass onLogin
+        <StudentLogin navigate={navigate} onLogin={handleLogin} />
       ) : (
-        <ShopkeeperLogin navigate={navigate} onLogin={onLogin}/>
+        <ShopkeeperLogin navigate={navigate} onLogin={handleLogin} />
       )}
     </div>
   );

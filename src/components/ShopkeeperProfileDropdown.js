@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import "./ShopkeeperProfileDropdown.css"; // New CSS file for Shopkeeper dropdown
-import logoImage from "./vividly-colored-hummingbird-natural-environment.jpg"; // Profile image/logo
+import logoImage from "./ProfileIcon.png"; // Profile image/logo
 
 const ShopkeeperProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,23 +1,27 @@
+// src/ShopkeeperLogin.jsx
 import React, { useState } from "react";
-import Hide from "./icons8-closed-eye-20.png";// Import icons from react-icons
-import UnHide from "./icons8-eye-20.png";// Import icons from react-icons
+import { shopkeeperLogin } from "./authService"; // Import the shopkeeperLogin service
+import Hide from "./icons8-closed-eye-20.png";
+import UnHide from "./icons8-eye-20.png";
+import "./LoginPage.css";
+
 const ShopkeeperLogin = ({ navigate, onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // For toggling password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === "shopkeeper123" && password === "shop123") {
-      onLogin(); // Call onLogin to update the logged-in state
+    try {
+      const data = await shopkeeperLogin({ username, password });
+      onLogin(data.user); // Update the logged-in state with user data
       navigate("/dashboard"); // Navigate to dashboard page
-    } else {
-      setError("Invalid credentials. Please try again.");
+    } catch (err) {
+      setError(err.message || "Invalid credentials. Please try again.");
     }
   };
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -30,7 +34,7 @@ const ShopkeeperLogin = ({ navigate, onLogin }) => {
         <div className="input-group">
           <input
             type="text"
-            placeholder="Enter Shop ID"
+            placeholder="Enter Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -39,7 +43,7 @@ const ShopkeeperLogin = ({ navigate, onLogin }) => {
 
         <div className="input-group password-field">
           <input
-            type={showPassword ? "text" : "password"} // Toggle between 'text' and 'password' type
+            type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -54,7 +58,6 @@ const ShopkeeperLogin = ({ navigate, onLogin }) => {
             ) : (
               <img src={Hide} alt="Hide" />
             )}
-            {/* Use react-icons */}
           </span>
         </div>
 
@@ -64,7 +67,8 @@ const ShopkeeperLogin = ({ navigate, onLogin }) => {
           </button>
           <p className="forgot-password">
             <button
-              onClick={() => navigate("/forgot-password")}
+              type="button"
+              onClick={() => navigate("/forgot-password?userType=shopkeeper")}
               className="link-button"
             >
               Forgot Password?
@@ -75,6 +79,7 @@ const ShopkeeperLogin = ({ navigate, onLogin }) => {
         <p className="signup-link">
           Don’t have an account?
           <button
+            type="button"
             onClick={() => navigate("/shopkeeper-signup")}
             className="link-button"
           >

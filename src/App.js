@@ -1,70 +1,100 @@
-import React, { useState, useEffect } from "react";
+// src/App.js
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AuthProvider from "./components/context/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
+
+// Import all your components
 import LoginPage from "./components/LoginPage";
 import StudentSignup from "./components/StudentSignup";
 import ShopkeeperSignup from "./components/ShopkeeperSignup";
 import ForgotPassword from "./components/ForgotPassword";
-import Shops from "./components/Shops"; // Import Shops
-
+import Shops from "./components/Shops";
 import OrderPage from "./components/OrderPage";
 import PreviewPage from "./components/PreviewPage";
 import PaymentPage from "./components/PaymentPage";
 import OrderHistory from "./components/OrdersHistory";
 import Dashboard from "./components/Dashboard";
 import ShopkeeperProfile from "./components/ShopkeeperProfile";
+import ResetPassword from "./components/ResetPassword";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track if logged in
-
-  // A function to handle login (you can customize it based on your login logic)
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  // Reset login status when navigating to LoginPage
-  useEffect(() => {
-    const handleRouteChange = () => {
-      if (window.location.pathname === "/") {
-        setIsLoggedIn(false);
-      }
-    };
-
-    window.addEventListener("popstate", handleRouteChange);
-    return () => {
-      window.removeEventListener("popstate", handleRouteChange);
-    };
-  }, []);
-
   return (
-    <Router>
-      <div className="App">
-        {/* Only render the header with ProfileDropdown if logged in */}
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          {/* Define your routes */}
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/student-signup" element={<StudentSignup />} />
+            <Route path="/shopkeeper-signup" element={<ShopkeeperSignup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        <Routes>
-          {/* Pass handleLogin to LoginPage so login can be tracked */}
-          <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/student-signup" element={<StudentSignup />} />
-          <Route path="/shopkeeper-signup" element={<ShopkeeperSignup />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          {/* Shops and other post-login routes */}
-          {isLoggedIn && <Route path="/shops" element={<Shops />} />}
-          {isLoggedIn && (
-            <Route path="/order/:shopName" element={<OrderPage />} />
-          )}
-          {isLoggedIn && <Route path="/preview" element={<PreviewPage />} />}
-          {isLoggedIn && <Route path="/payment" element={<PaymentPage />} />}
-          {isLoggedIn && (
-            <Route path="/order-history" element={<OrderHistory />} />
-          )}
-          {isLoggedIn && <Route path="/dashboard" element={<Dashboard />} />}
-          {isLoggedIn && <Route path="/shopkeeper-profile" element={<ShopkeeperProfile />} />}
-          
-
-          {/* Add payment route */}
-        </Routes>
-      </div>
-    </Router>
+            {/* Protected Routes */}
+            <Route
+              path="/shops"
+              element={
+                <PrivateRoute>
+                  <Shops />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/order/:shopName"
+              element={
+                <PrivateRoute>
+                  <OrderPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/preview"
+              element={
+                <PrivateRoute>
+                  <PreviewPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/payment"
+              element={
+                <PrivateRoute>
+                  <PaymentPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/order-history"
+              element={
+                <PrivateRoute>
+                  <OrderHistory />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/shopkeeper-profile"
+              element={
+                <PrivateRoute>
+                  <ShopkeeperProfile />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+            {/* Add other routes as needed */}
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

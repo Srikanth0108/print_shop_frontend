@@ -1,24 +1,27 @@
+// src/StudentLogin.jsx
 import React, { useState } from "react";
-import Hide from "./icons8-closed-eye-20.png";// Import icons from react-icons
-import UnHide from "./icons8-eye-20.png";// Import icons from react-icons
+import { studentLogin } from "./authService"; // Import the studentLogin service
+import Hide from "./icons8-closed-eye-20.png";
+import UnHide from "./icons8-eye-20.png";
+import "./LoginPage.css";
 
 const StudentLogin = ({ navigate, onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // For toggling password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === "student" && password === "student123") {
-      onLogin(); // Call the onLogin function to update the logged-in state
+    try {
+      const data = await studentLogin({ username, password });
+      onLogin(data.user); // Update the logged-in state with user data
       navigate("/shops"); // Navigate to Shops page
-    } else {
-      setError("Invalid credentials. Please try again.");
+    } catch (err) {
+      setError(err.message || "Invalid credentials. Please try again.");
     }
   };
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -40,7 +43,7 @@ const StudentLogin = ({ navigate, onLogin }) => {
 
         <div className="input-group password-field">
           <input
-            type={showPassword ? "text" : "password"} // Toggle between 'text' and 'password' type
+            type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -55,7 +58,6 @@ const StudentLogin = ({ navigate, onLogin }) => {
             ) : (
               <img src={Hide} alt="Hide" />
             )}
-            {/* Use react-icons */}
           </span>
         </div>
 
@@ -65,7 +67,8 @@ const StudentLogin = ({ navigate, onLogin }) => {
           </button>
           <p className="forgot-password">
             <button
-              onClick={() => navigate("/forgot-password")}
+              type="button"
+              onClick={() => navigate("/forgot-password?userType=student")}
               className="link-button"
             >
               Forgot Password?
@@ -76,6 +79,7 @@ const StudentLogin = ({ navigate, onLogin }) => {
         <p className="signup-link">
           Don’t have an account?
           <button
+            type="button"
             onClick={() => navigate("/student-signup")}
             className="link-button"
           >
