@@ -57,12 +57,28 @@ const OrderPage = () => {
 
 
   const handleFileChange = (index, event) => {
-    const newDocuments = [...documents];
-    newDocuments[index] = event.target.files[0];
-    setDocuments(newDocuments);
-    setInputsChanged(true);
-    setButtonText("Calculate Total"); // Set button text to "Calculate Total" on input change
-  };
+    const file = event.target.files[0];
+
+    // Basic validation for file type and size (limit to 5MB)
+    if (file) {
+        if (file.size > 5 * 1024 * 1024) {
+            alert("File size should be less than 5MB.");
+            return; // Exit the function if the file size is too large
+        }
+
+        if (!["application/pdf", "image/jpeg", "image/png","image/jpg"].includes(file.type)) {
+            alert("Only PDF and image files are allowed.");
+            return; // Exit the function if the file type is not allowed
+        }
+
+        // If validations pass, update the documents state
+        const newDocuments = [...documents];
+        newDocuments[index] = file;
+        setDocuments(newDocuments);
+        setInputsChanged(true);
+        setButtonText("Calculate Total"); // Update button text on input change
+    }
+};
 
   const handlePageChange = (event) => {
     setPagesToPrint(event.target.value);
@@ -207,7 +223,7 @@ const OrderPage = () => {
                   setButtonText("Calculate Total"); // Set button text to "Calculate Total" on input change
                 }}
               />
-              Print in Grayscale (Black and White)
+              Print in Black and White (Uncheck for color)
             </label>
           </div>
 
@@ -359,7 +375,7 @@ const OrderPage = () => {
                   <input
                     type="file"
                     onChange={(e) => handleFileChange(index, e)}
-                    accept=".pdf,.jpg,.png"
+                    accept=".pdf,.jpg,.png,.jpeg"
                   />
                   {index === documents.length - 1 && documents.length > 1 && (
                     <button
@@ -382,6 +398,7 @@ const OrderPage = () => {
             </div>
           </div>
           <div className="order-input-group">
+            <p className="note">(only .pdf,.png,.jpg,.jpeg)</p>
             <p className="note">
               Note! For Multiple Documents Same Preference Will Be Applied.
             </p>
