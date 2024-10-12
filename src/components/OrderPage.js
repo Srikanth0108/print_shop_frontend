@@ -359,7 +359,7 @@ const OrderPage = () => {
                   <input
                     type="file"
                     onChange={(e) => handleFileChange(index, e)}
-                    accept=".pdf,.doc,.docx,.jpg,.png"
+                    accept=".pdf,.jpg,.png"
                   />
                   {index === documents.length - 1 && documents.length > 1 && (
                     <button

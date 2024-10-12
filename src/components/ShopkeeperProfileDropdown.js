@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import "./ShopkeeperProfileDropdown.css"; // New CSS file for Shopkeeper dropdown
 import logoImage from "./ProfileIcon.png"; // Profile image/logo
+import { AuthContext } from "./context/AuthContext";
 
 const ShopkeeperProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-
+  const { logout } = useContext(AuthContext);
   const handleDropdownToggle = (e) => {
     e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
   const handleLogout = () => {
+    logout();
     // Implement logout functionality here
     navigate("/"); // Navigate to the login page
   };
