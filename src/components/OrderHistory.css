@@ -11,8 +11,7 @@ html, body {
 .order-history-container {
   text-align: center;
   background-color: #0d0d0d; /* Deep dark background */
-  width: 100%; /* Full width */
-  animation: fadeIn 0.5s ease-in; /* Fade in animation */
+  width: 100%; /* Full width *//* Fade in animation */
   height: calc(100vh - 60px); /* Full height of viewport minus header height */
   padding-top: 60px; /* Match the header height */
 }
@@ -74,8 +73,26 @@ html, body {
 .profile-dropdown {
   position: relative; /* Change to relative for proper alignment */
 }
+.orders-page-container {
+    padding: 20px;
+}
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px auto;
+}
+
+.orders-table th, .orders-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
 
 /* Keyframes for fade in animation */
 @keyframes fadeIn {
