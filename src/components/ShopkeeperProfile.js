@@ -11,8 +11,7 @@ const ShopkeeperProfile = () => {
     "Shop no :240, Ground Floor, University Building, SRM Nagar, Kattangulathur"
   );
   const [isSaved, setIsSaved] = useState(false); // Track if the form is saved
-  const [error, setError] = useState(""); // Track form errors
-  const shopID = "shopkeeper123"; // Constant shopID
+  const [error, setError] = useState(""); // Track form errors // Constant shopID
 
   // Handle input change for username
   const handleUsernameChange = (e) => {
@@ -57,17 +56,6 @@ const ShopkeeperProfile = () => {
         {error && <p className="error-message">{error}</p>}
 
         <form>
-          <div className="form-group">
-            <label htmlFor="shopID">Shop ID</label>
-            <input
-              type="text"
-              id="shopID"
-              value={shopID}
-              readOnly
-              className="profile-input"
-            />
-          </div>
-
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input

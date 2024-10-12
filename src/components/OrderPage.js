@@ -4,7 +4,7 @@ import "./OrderPage.css";
 import ProfileDropdown from "./ProfileDropdown";
 import del from "./icons8-delete-20.png";
 import { useLocation } from "react-router-dom";
-
+import { PDFDocument } from 'pdf-lib';
 const OrderPage = () => {
   const { shopName } = useParams();
   const navigate = useNavigate();
@@ -83,27 +83,39 @@ const OrderPage = () => {
     setButtonText("Calculate Total"); // Set button text to "Calculate Total" on input change
   };
 
-  const countPagesInDocument = (doc) => {
-    return 10; // Placeholder logic for counting pages in a document
+  const countPagesInDocument = async(doc) => {
+    if (doc.type === 'application/pdf') {
+    const arrayBuffer = await doc.arrayBuffer(); // Get the file as an ArrayBuffer
+    const pdfDoc = await PDFDocument.load(arrayBuffer); // Load the PDF document
+    return pdfDoc.getPageCount(); // Return the number of pages in the PDF
+  } 
+  // Check if the document is an image file
+  else if (doc.type.startsWith('image/')) {
+    return 1; // Count each image as a single page
+  } else {
+    throw new Error('Unsupported file type'); // Handle unsupported file types
+  } // Placeholder logic for counting pages in a document
   };
 
-  const calculateTotal = () => {
-    if (documents.some((doc) => doc === "")) {
-      alert("Please upload all documents.");
-      return;
-    }
+  const calculateTotal = async () => {
+  if (documents.some((doc) => doc === "")) {
+    alert("Please upload all documents.");
+    return;
+  }
 
-    let pageCost = grayscale
-      ? grayscalePagePrices[pageType] || 0
-      : colorPagePrices[pageType] || 0;
+  let pageCost = grayscale
+    ? grayscalePagePrices[pageType] || 0
+    : colorPagePrices[pageType] || 0;
 
-    let totalCost = 0;
+  let totalCost = 0;
 
-    documents.forEach((doc) => {
+  // Use Promise.all to resolve the page counts for all documents
+  const pageCounts = await Promise.all(
+    documents.map(async (doc) => {
       let documentPageCount = 0;
 
       if (pagesToPrint === "all") {
-        documentPageCount = countPagesInDocument(doc);
+        documentPageCount = await countPagesInDocument(doc); // Await the count for "all" pages
       } else if (pagesToPrint === "pages" && specificPages) {
         const ranges = specificPages.split(",").map((range) => {
           const [start, end] = range.split("-").map(Number);
@@ -112,18 +124,24 @@ const OrderPage = () => {
         documentPageCount = ranges.reduce((sum, count) => sum + count, 0);
       }
 
-      let documentCost = documentPageCount * pageCost * copies;
+      return documentPageCount;
+    })
+  );
 
-      const bindingCost = binding === "blue" || binding === "white" ? 30 : 0;
-      documentCost += bindingCost * copies;
+  pageCounts.forEach((documentPageCount) => {
+    let documentCost = documentPageCount * pageCost * copies;
 
-      totalCost += documentCost;
-    });
+    const bindingCost = binding === "blue" || binding === "white" ? 30 : 0;
+    documentCost += bindingCost * copies;
 
-    setTotal(totalCost);
-    setInputsChanged(false); // Reset inputs changed after calculating total
-    setButtonText("Confirm Payment"); // Update the button text after calculating total
-  };
+    totalCost += documentCost;
+  });
+
+  setTotal(totalCost);
+  setInputsChanged(false); // Reset inputs changed after calculating total
+  setButtonText("Confirm Payment"); // Update the button text after calculating total
+};
+
 
   const handleButtonClick = () => {
     if (buttonText === "Calculate Total") {
