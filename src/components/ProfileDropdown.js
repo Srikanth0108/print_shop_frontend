@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import "./ProfileDropdown.css";
 import logoImage from "./ProfileIcon.png";
-
+import { AuthContext } from "./context/AuthContext";
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate(); // Hook for navigation
 
   const handleDropdownToggle = (e) => {
@@ -15,6 +16,7 @@ const ProfileDropdown = () => {
   const handleLogout = () => {
     // Implement logout functionality here
     // For example, clear user session and navigate to login page
+    logout();
     navigate("/"); // Navigate to the login page
   };
 
