@@ -74,7 +74,26 @@ html, body {
 .shopkeeper-profile-dropdown {
   position: relative; /* Change to relative for proper alignment */
 }
+.orders-table select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #2a2a2a;
+  background-color: #121212;
+  color: #fff;
+  cursor: pointer;
+}
+.orders-table select:focus {
+  outline: none;
+  border: 1px solid #ff6b6b;
+  background-color: #1e1e1e;
+}
+.status-completed {
+  color: rgb(49, 161, 49); /* Blue color for Completed status */
+}
 
+.status-failed {
+  color: #ff0000; /* Red color for Failed status */
+}
 /* Keyframes for fade in animation */
 @keyframes fadeIn {
   from {
