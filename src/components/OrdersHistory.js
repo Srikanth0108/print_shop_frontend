@@ -36,9 +36,16 @@ const OrderHistory = () => {
   useEffect(() => {
     console.log("Orders state after update:", orders);
   }, [orders]);
-  const filteredOrders = orders.filter((order) =>
-    order.shopname?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filterOrders = (orders) => {
+    return orders.filter((order) =>
+      Object.values(order).some((value) =>
+        String(value).toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  };
+
+  const filteredOrders = filterOrders(orders);
+
 
   return (
     <div className="order-history-container">
@@ -102,7 +109,7 @@ const OrderHistory = () => {
                       )}
                     </td>
                     <td>{order.total} Rs</td>
-                    <td>{new Date(order.created_at).toLocaleDateString()}</td>
+                    <td>{new Date(order.created_at).toLocaleString()}</td>
                     <td>{order.payment_id}</td>
                     <td>{order.status}</td>
                   </tr>
