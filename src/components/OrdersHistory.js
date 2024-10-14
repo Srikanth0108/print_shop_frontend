@@ -69,58 +69,60 @@ const OrderHistory = () => {
           </header>
 
           {/* Orders Table */}
-          <table className="orders-table">
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Shop Name</th>
-                <th>Copies</th>
-                <th>Document Url</th>
-                <th>Total Amount</th>
-                <th>Date</th>
-                <th>Payment ID</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredOrders.length > 0 ? (
-                filteredOrders.map((order, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{order.shopname}</td>
-                    <td>{order.copies}</td>
-                    <td>
-                      {/* Check if documents is an array and map through it */}
-                      {Array.isArray(order.documents) &&
-                      order.documents.length > 0 ? (
-                        order.documents.map((docUrl, docIndex) => (
-                          <div key={docIndex}>
-                            <a
-                              href={docUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Document {docIndex + 1}
-                            </a>
-                          </div>
-                        ))
-                      ) : (
-                        <span>No documents available</span>
-                      )}
-                    </td>
-                    <td>{order.total} Rs</td>
-                    <td>{new Date(order.created_at).toLocaleString()}</td>
-                    <td>{order.payment_id}</td>
-                    <td>{order.status}</td>
-                  </tr>
-                ))
-              ) : (
+          <div className="table-container">
+            <table className="orders-table">
+              <thead>
                 <tr>
-                  <td colSpan="8">No orders found</td>
+                  <th>S.No</th>
+                  <th>Shop Name</th>
+                  <th>Copies</th>
+                  <th>Document Url</th>
+                  <th>Total Amount</th>
+                  <th>Date</th>
+                  <th>Payment ID</th>
+                  <th>Status</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredOrders.length > 0 ? (
+                  filteredOrders.map((order, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{order.shopname}</td>
+                      <td>{order.copies}</td>
+                      <td>
+                        {/* Check if documents is an array and map through it */}
+                        {Array.isArray(order.documents) &&
+                        order.documents.length > 0 ? (
+                          order.documents.map((docUrl, docIndex) => (
+                            <div key={docIndex}>
+                              <a
+                                href={docUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Document {docIndex + 1}
+                              </a>
+                            </div>
+                          ))
+                        ) : (
+                          <span>No documents available</span>
+                        )}
+                      </td>
+                      <td>{order.total} Rs</td>
+                      <td>{new Date(order.created_at).toLocaleString()}</td>
+                      <td>{order.payment_id}</td>
+                      <td>{order.status}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="8">No orders found</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
     </div>

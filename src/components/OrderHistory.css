@@ -83,9 +83,8 @@ h1 {
 }
 
 .orders-table {
-    width: 100%;
     border-collapse: collapse;
-    margin: 40px auto;
+    margin-top: 30px;
 }
 
 .orders-table th, .orders-table td {
@@ -93,7 +92,14 @@ h1 {
     padding: 10px;
     text-align: center;
 }
-
+.orders-table{
+  margin: 30px auto; 
+  overflow: auto;  
+}
+.table-container{
+  width: 1400px;
+  text-align: center;
+}
 /* Keyframes for fade in animation */
 @keyframes fadeIn {
   from {
@@ -104,6 +110,26 @@ h1 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+@media (max-width: 1400px) {
+   .table-container{
+  width:1000px;
+   }
+}
+@media (max-width: 1000px) {
+   .table-container{
+  width:800px;
+   }
+}
+@media (max-width: 800px) {
+   .table-container{
+  width:600px;
+   }
+}
+@media (max-width: 600px) {
+   .table-container{
+  width:400px;
+   }
 }
 @media (max-width: 400px) {
   .search-bar {
@@ -122,4 +148,7 @@ h1 {
     width: 100%; /* Ensure the input takes full width */
     font-size: 14px; /* Slightly reduce font size for smaller screens */
   }
+  .table-container{
+  width:300px;
+   }
 }
