@@ -94,6 +94,18 @@ html, body {
 .status-failed {
   color: #ff0000; /* Red color for Failed status */
 }
+.orders-table tr:hover{
+   background-color:rgb(34, 32, 32);
+}
+.shopkeeper-main-content{
+  width:1400px;
+  text-align: center;
+  margin-top: 20px;
+  
+}
+.table-container{
+  overflow: auto;
+}
 /* Keyframes for fade in animation */
 @keyframes fadeIn {
   from {
@@ -105,6 +117,39 @@ html, body {
     transform: translateY(0);
   }
 }
+@media (max-width: 1400px) {
+   .shopkeeper-main-content{
+  width:1000px;
+  text-align: center;
+  margin-top: 20px;
+  
+}
+}
+@media (max-width: 1000px) {
+   .shopkeeper-main-content{
+  width:800px;
+  text-align: center;
+  margin-top: 20px;
+  
+}
+}
+@media (max-width: 800px) {
+   .shopkeeper-main-content{
+  width:600px;
+  text-align: center;
+  margin-top: 20px;
+  
+}
+}
+@media (max-width: 600px) {
+   .shopkeeper-main-content{
+  width:400px;
+  text-align: center;
+  margin-top: 20px;
+  
+}
+}
+
 @media (max-width: 400px) {
   .shopkeeper-search-bar {
     width: 100%; /* Make the search bar take full width on mobile */
@@ -122,4 +167,11 @@ html, body {
     width: 100%; /* Ensure the input field takes full width */
     font-size: 14px; /* Slightly reduce font size for mobile readability */
   }
+  .shopkeeper-main-content{
+  width:300px;
+  text-align: center;
+  margin-top: 20px;
+  
 }
+}
+
