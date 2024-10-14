@@ -67,7 +67,7 @@ html, body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); 
   transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
   position: relative; /* Use relative positioning */
-  top: 210px; /* Push it down by the same height as the header *//* This margin accounts for the fixed header height */
+  top: 220px; /* Push it down by the same height as the header *//* This margin accounts for the fixed header height */
 }
 .form-container:hover {
  /* Active color */

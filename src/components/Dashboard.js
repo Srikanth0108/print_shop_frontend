@@ -135,6 +135,7 @@ const ShopkeeperDashboard = () => {
                     <tr>
                       <th>Username</th>
                       <th>Black&White</th>
+                      <th>Front&Back</th>
                       <th>Copies</th>
                       <th>Pagetype</th>
                       <th>Pagestoprint</th>
@@ -156,6 +157,7 @@ const ShopkeeperDashboard = () => {
                         <tr key={order.payment_id}>
                           <td>{order.username}</td>
                           <td>{order.grayscale}</td>
+                          <td>{order.frontandback}</td>
                           <td>{order.copies}</td>
                           <td>{order.pagetype}</td>
                           <td>{order.pagestoprint}</td>
@@ -206,7 +208,7 @@ const ShopkeeperDashboard = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="15" style={{ textAlign: "center" }}>
+                        <td colSpan="16" style={{ textAlign: "center" }}>
                           No Processing Orders Found.
                         </td>
                       </tr>
@@ -225,6 +227,7 @@ const ShopkeeperDashboard = () => {
                     <tr>
                       <th>Username</th>
                       <th>Black&White</th>
+                      <th>Front&Back</th>
                       <th>Copies</th>
                       <th>Pagetype</th>
                       <th>Pagestoprint</th>
@@ -246,6 +249,7 @@ const ShopkeeperDashboard = () => {
                         <tr key={order.payment_id}>
                           <td>{order.username}</td>
                           <td>{order.grayscale}</td>
+                          <td>{order.frontandback}</td>
                           <td>{order.copies}</td>
                           <td>{order.pagetype}</td>
                           <td>{order.pagestoprint}</td>
@@ -281,7 +285,7 @@ const ShopkeeperDashboard = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="15" style={{ textAlign: "center" }}>
+                        <td colSpan="16" style={{ textAlign: "center" }}>
                           No Completed Orders Found.
                         </td>
                       </tr>
@@ -300,6 +304,7 @@ const ShopkeeperDashboard = () => {
                     <tr>
                       <th>Username</th>
                       <th>Black&White</th>
+                      <th>Front&Back</th>
                       <th>Copies</th>
                       <th>Pagetype</th>
                       <th>Pagestoprint</th>
@@ -321,6 +326,7 @@ const ShopkeeperDashboard = () => {
                         <tr key={order.payment_id}>
                           <td>{order.username}</td>
                           <td>{order.grayscale}</td>
+                          <td>{order.frontandback}</td>
                           <td>{order.copies}</td>
                           <td>{order.pagetype}</td>
                           <td>{order.pagestoprint}</td>
@@ -356,7 +362,7 @@ const ShopkeeperDashboard = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="15" style={{ textAlign: "center" }}>
+                        <td colSpan="16" style={{ textAlign: "center" }}>
                           No Failed Orders Found.
                         </td>
                       </tr>

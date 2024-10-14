@@ -17,6 +17,7 @@ const OrderPage = () => {
   const [documents, setDocuments] = useState([""]);
   const [comments, setComments] = useState("");
   const [grayscale, setGrayscale] = useState(true);
+  const [frontAndBack, setFrontAndBack] = useState(false);
   const [frontPagePrint, setFrontPagePrint] = useState(false);
   const [total, setTotal] = useState(0);
   const [buttonText, setButtonText] = useState("Calculate Total");
@@ -180,6 +181,7 @@ const OrderPage = () => {
           comments,
           grayscale,
           frontPagePrint,
+          frontAndBack,
           total,
         };
         navigate("/preview", { state: {state:formData } });
@@ -223,7 +225,22 @@ const OrderPage = () => {
                   setButtonText("Calculate Total"); // Set button text to "Calculate Total" on input change
                 }}
               />
-              Print in Black and White (Uncheck for color)
+              Black and White (Uncheck for color)
+            </label>
+          </div>
+
+          <div className="order-input-group front-and-back-checkbox">
+            <label>
+              <input
+                type="checkbox"
+                checked={frontAndBack}
+                onChange={(e) => {
+                  setFrontAndBack(e.target.checked);
+                  setInputsChanged(true);
+                  setButtonText("Calculate Total"); // Update button text on input change
+                }}
+              />
+              Front and back
             </label>
           </div>
 

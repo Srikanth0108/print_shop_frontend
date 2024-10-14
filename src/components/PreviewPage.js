@@ -20,10 +20,11 @@ const PreviewPage = () => {
     specificPages,
     orientation,
     binding,
-    documents=[],
+    documents = [],
     comments,
     grayscale,
     frontPagePrint,
+    frontAndBack,
     total,
   } = location.state?.state || {
     total: 0,
@@ -60,6 +61,7 @@ const PreviewPage = () => {
         comments,
         grayscale,
         frontPagePrint,
+        frontAndBack,
         total,
         payment_id: paymentId, // Simulated payment ID
       };
