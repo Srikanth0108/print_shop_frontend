@@ -70,7 +70,7 @@ const PreviewPage = () => {
 await axios.post("http://localhost:5000/api/save-order", orderData);
 
       // Navigate to thank you page or confirmation page after successful "payment"
-      navigate("/thank-you-page", { state: { paymentId, total } });
+      navigate("/thank-you-page", { state: { paymentId, total,shopName } });
     } catch (error) {
       console.error("Error processing the payment:", error);
       setIsProcessing(false); // Reset processing state if there's an error

@@ -6,7 +6,7 @@ const ThankYouPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { paymentId, total } = location.state || { paymentId: "", total: 0 };
+  const { paymentId, total, shopName} = location.state || { paymentId: "", total: 0 ,shopName:""};
 
   const handleGoHome = () => {
     navigate("/order-history"); // Navigate back to home page
@@ -20,6 +20,7 @@ const ThankYouPage = () => {
 
       <div className="thank-you-details">
         <h2>Your payment was successful!</h2>
+        <h3>Shop Name: {shopName}</h3>
         <h3>Payment ID: {paymentId}</h3>
         <h3>Total Amount: {total} Rs</h3>
         <p>Your order will be processed shortly. Thank you for choosing us!</p>
