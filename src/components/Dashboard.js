@@ -9,7 +9,8 @@ const ShopkeeperDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [processingOrders, setProcessingOrders] = useState([]);
   const [completedOrders, setCompletedOrders] = useState([]);
-  const [failedOrders, setFailedOrders] = useState([]); // New state for Failed Orders
+  const [failedOrders, setFailedOrders] = useState([]); 
+   const [isActive, setIsActive] = useState(true);     // New state for Failed Orders
   const username = auth.user?.username || "";
 
   useEffect(() => {
@@ -19,7 +20,57 @@ const ShopkeeperDashboard = () => {
     }, 500); // Adjust loading time as needed
     return () => clearTimeout(timer);
   }, []);
+   useEffect(() => {
+  // Fetch initial activity status for the checkbox
+  const fetchActivityStatus = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/shopkeeper/${username}/activity`
+      );
 
+      if (!response.ok) {
+        throw new Error("Failed to fetch activity status");
+      }
+
+      const data = await response.json();
+      setIsActive(data.active); // Corrected to use 'active' instead of 'activity'
+    } catch (error) {
+      console.error("Error fetching activity status:", error);
+    }
+  };
+
+  fetchActivityStatus();
+}, [username]);
+
+const handleCheckboxChange = async (event) => {
+  const newActivityStatus = event.target.checked;
+  setIsActive(newActivityStatus); // Update local state
+
+  // Update activity status in the backend
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/shopkeeper/${username}/activity`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ activity: newActivityStatus }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to update activity status");
+    }
+
+    const result = await response.json();
+    console.log("Activity status updated:", result);
+  } catch (error) {
+    console.error("Error updating activity status:", error);
+    // Optionally, revert state if the update fails
+    setIsActive(!newActivityStatus);
+  }
+};
   useEffect(() => {
     if (username) {
       // Define fetchOrders inside useEffect
@@ -126,6 +177,14 @@ const ShopkeeperDashboard = () => {
           </header>
 
           <main className="shopkeeper-main-content">
+            <label>
+                <input
+                  type="checkbox"
+                  checked={isActive}
+                  onChange={handleCheckboxChange}
+                />
+                Active
+              </label>
             {/* Processing Orders Section */}
             <section className="orders-section">
               <h2>Processing Orders</h2>

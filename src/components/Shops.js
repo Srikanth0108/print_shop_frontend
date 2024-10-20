@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown"; // Import ProfileDropdown
-import { Link } from "react-router-dom"; // Import Link for navigation
+import {useNavigate } from "react-router-dom"; // Import Link for navigation
 import "./Shops.css"; // Shops specific styling
 import { useLocation } from "react-router-dom";
 const Shops = () => {
@@ -8,6 +8,7 @@ const Shops = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation(); // Get location object
   const username = location.state?.username;
+  const navigate = useNavigate();
   // Fetch shop data from backend
   useEffect(() => {
     const fetchShopData = async () => {
@@ -30,6 +31,26 @@ const Shops = () => {
   const filteredShops = shopData.filter((shop) =>
     shop.username.toLowerCase().includes(searchTerm.toLowerCase()) // Adjust based on your data structure
   );
+  const handleOrderButtonClick = async (shop) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/shop/${shop.username}/activity`);
+      const data = await response.json();
+
+      if (response.ok) {
+        if (data.active) {
+          // Proceed to the order page if the shop is active
+          navigate(`/order/${shop.username}`, { state: { username } });
+        } else {
+          alert("The shop is closed.");
+        }
+      } else {
+        alert(data.message); // Handle any error messages from the server
+      }
+    } catch (error) {
+      console.error("Error checking activity status:", error);
+      alert("An error occurred while checking the shop's status.");
+    }
+  };
 
   return (
     <div className="shops-container">
@@ -56,9 +77,7 @@ const Shops = () => {
               {/* Adjusted from shop.description */}
               <p>{shop.shop_details}</p> {/* Adjusted from shop.details */}
               <span>
-                <Link to={`/order/${shop.username}`} state={{ username }}>
-                  <button className="order-btn">Order</button>
-                </Link>
+               <button className="order-btn" onClick={() => handleOrderButtonClick(shop)}>Order</button>
               </span>
             </div>
           ))
