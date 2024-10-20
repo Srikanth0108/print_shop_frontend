@@ -24,6 +24,7 @@ const ShopkeeperDashboard = () => {
   // Fetch initial activity status for the checkbox
   const fetchActivityStatus = async () => {
     try {
+      console.log("Username:", username);
       const response = await fetch(
         `http://localhost:5000/api/shopkeeper/${username}/activity`
       );

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./OrderPage.css";
 import ProfileDropdown from "./ProfileDropdown";
 import del from "./icons8-delete-20.png";
-import { useLocation } from "react-router-dom";
 import { PDFDocument } from 'pdf-lib';
+import { AuthContext } from "./context/AuthContext";
 const OrderPage = () => {
+  const { auth } = useContext(AuthContext);
   const { shopName } = useParams();
   const navigate = useNavigate();
   const [copies, setCopies] = useState(1);
@@ -22,8 +23,8 @@ const OrderPage = () => {
   const [total, setTotal] = useState(0);
   const [buttonText, setButtonText] = useState("Calculate Total");
   const [inputsChanged, setInputsChanged] = useState(false);
-  const location = useLocation(); // Get location object
-  const username = location.state?.username;
+ // Get location object
+  const username = auth.user?.username || "";
    console.log("Username in Shops:", username);
   const grayscalePagePrices = {
     A1: 80,

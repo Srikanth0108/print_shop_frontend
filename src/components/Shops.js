@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown"; // Import ProfileDropdown
 import {useNavigate } from "react-router-dom"; // Import Link for navigation
 import "./Shops.css"; // Shops specific styling
-import { useLocation } from "react-router-dom";
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const location = useLocation(); // Get location object
-  const username = location.state?.username;
+  const [searchTerm, setSearchTerm] = useState(""); // Get location object
+
   const navigate = useNavigate();
   // Fetch shop data from backend
   useEffect(() => {
@@ -39,7 +37,7 @@ const Shops = () => {
       if (response.ok) {
         if (data.active) {
           // Proceed to the order page if the shop is active
-          navigate(`/order/${shop.username}`, { state: { username } });
+          navigate(`/order/${shop.username}`);
         } else {
           alert("The shop is closed. Please try again later.");
         }
