@@ -22,6 +22,7 @@ const ShopkeeperDashboard = () => {
   }, []);
    useEffect(() => {
   // Fetch initial activity status for the checkbox
+  if (username) {
   const fetchActivityStatus = async () => {
     try {
       console.log("Username:", username);
@@ -41,6 +42,7 @@ const ShopkeeperDashboard = () => {
   };
 
   fetchActivityStatus();
+}
 }, [username]);
 
 const handleCheckboxChange = async (event) => {
@@ -178,7 +180,7 @@ const handleCheckboxChange = async (event) => {
           </header>
 
           <main className="shopkeeper-main-content">
-            <label>
+            <label className={`checkbox-label ${isActive ? 'active' : 'inactive'}`}>
                 <input
                   type="checkbox"
                   checked={isActive}
