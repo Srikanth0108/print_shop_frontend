@@ -27,6 +27,11 @@ const ProfileDropdown = () => {
   const handleOrder = () => {
     navigate("/order-history"); // Navigate to the Orders page
   };
+  const handleEmail = () => {
+window.open(
+  "https://mail.google.com/mail/?view=cm&fs=1&to=rr9589@srmist.edu.in",
+  "_blank"
+);  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -58,6 +63,9 @@ const ProfileDropdown = () => {
           </button>
           <button className="logout-button" onClick={handleOrder}>
             Orders
+          </button>
+          <button className="logout-button" onClick={handleEmail}>
+            Help
           </button>
           <button className="logout-button" onClick={handleLogout}>
             Logout

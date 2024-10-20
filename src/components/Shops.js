@@ -41,7 +41,7 @@ const Shops = () => {
           // Proceed to the order page if the shop is active
           navigate(`/order/${shop.username}`, { state: { username } });
         } else {
-          alert("The shop is closed.");
+          alert("The shop is closed. Please try again later.");
         }
       } else {
         alert(data.message); // Handle any error messages from the server

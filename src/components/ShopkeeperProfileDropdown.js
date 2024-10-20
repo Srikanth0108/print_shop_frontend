@@ -26,6 +26,12 @@ const ShopkeeperProfileDropdown = () => {
   const handleDashboard = () => {
     navigate("/dashboard"); // Navigate to the Dashboard page
   };
+    const handleEmail = () => {
+      window.open(
+        "https://mail.google.com/mail/?view=cm&fs=1&to=rr9589@srmist.edu.in",
+        "_blank"
+      );
+    };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -63,6 +69,12 @@ const ShopkeeperProfileDropdown = () => {
             onClick={handleDashboard}
           >
             Dashboard
+          </button>
+          <button
+            className="shopkeeper-dropdown-button"
+            onClick={handleEmail}
+          >
+            Help
           </button>
           <button className="shopkeeper-dropdown-button" onClick={handleLogout}>
             Logout
