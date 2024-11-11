@@ -356,7 +356,7 @@ const OrderPage = () => {
                   setButtonText("Calculate Total"); // Set button text to "Calculate Total" on input change
                 }}
               />{" "}
-              Blue Binding
+              Blue Front Sheet
               <input
                 type="radio"
                 name="binding"
