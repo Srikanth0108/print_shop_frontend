@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext,useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./OrderPage.css";
 import ProfileDropdown from "./ProfileDropdown";
@@ -23,25 +23,52 @@ const OrderPage = () => {
   const [total, setTotal] = useState(0);
   const [buttonText, setButtonText] = useState("Calculate Total");
   const [inputsChanged, setInputsChanged] = useState(false);
+  const [shopPrices, setShopPrices] = useState(null);
  // Get location object
   const username = auth.user?.username || "";
    console.log("Username in Shops:", username);
+  
+  useEffect(() => {
+    const fetchShopPrices = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/shops/${shopName}/prices`
+        );
+        if (!response.ok) throw new Error("Failed to fetch shop prices");
+
+        const result = await response.json();
+        console.log("Fetched shop prices:", result); // Add this line
+
+        if (result.success) {
+          setShopPrices(result.data); // Store the 'data' part from API response
+        } else {
+          throw new Error(result.message || "Unknown error");
+        }
+      } catch (error) {
+        console.error("Error fetching shop prices:", error);
+        alert("Failed to load shop prices. Please try again later.");
+      }
+    };
+
+    fetchShopPrices();
+  }, [shopName]);
+
   const grayscalePagePrices = {
-    A1: 80,
-    A2: 50,
-    A3: 10,
-    A4: 1,
-    A5: 0.5,
-    A6: 0.3,
+    A1: shopPrices?.a1_bw || 0, // Make sure these match your API response keys
+    A2: shopPrices?.a2_bw || 0,
+    A3: shopPrices?.a3_bw || 0,
+    A4: shopPrices?.a4_bw || 0,
+    A5: shopPrices?.a5_bw || 0,
+    A6: shopPrices?.a6_bw || 0,
   };
 
   const colorPagePrices = {
-    A1: 250,
-    A2: 150,
-    A3: 50,
-    A4: 5,
-    A5: 3,
-    A6: 2,
+    A1: shopPrices?.a1_color || 0, // Make sure these match your API response keys
+    A2: shopPrices?.a2_color || 0,
+    A3: shopPrices?.a3_color || 0,
+    A4: shopPrices?.a4_color || 0,
+    A5: shopPrices?.a5_color || 0,
+    A6: shopPrices?.a6_color || 0,
   };
 
   const addUploadField = () => {
@@ -116,6 +143,10 @@ const OrderPage = () => {
   };
 
   const calculateTotal = async () => {
+  if (!shopPrices) {
+    alert("Shop pricing information is not available. Please try again later.");
+    return;
+  }
   if (documents.some((doc) => doc === "")) {
     alert("Please upload all documents.");
     return;
@@ -124,6 +155,8 @@ const OrderPage = () => {
   let pageCost = grayscale
     ? grayscalePagePrices[pageType] || 0
     : colorPagePrices[pageType] || 0;
+
+  console.log("Page Cost:", pageCost, "Page Type:", pageType);
 
   let totalCost = 0;
 
@@ -149,7 +182,7 @@ const OrderPage = () => {
   pageCounts.forEach((documentPageCount) => {
     let documentCost = documentPageCount * pageCost * copies;
 
-    const bindingCost = binding === "blue" || binding === "white" ? 30 : 0;
+    const bindingCost = binding === "blue" || binding === "white" ? (shopPrices?.binding_cost || 0) : 0;
     documentCost += bindingCost * copies;
 
     totalCost += documentCost;

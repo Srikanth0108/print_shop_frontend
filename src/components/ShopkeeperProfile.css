@@ -69,7 +69,7 @@ label {
 }
 
 /* Save Button */
-.save-button {
+.save-button ,.next-btn{
   width: 100%;
   padding: 12px;
   background-color: #f94144; /* Updated button color */
@@ -85,7 +85,7 @@ label {
   background-color: #ff4c4c; /* Green when saved */
 }
 
-.save-button:hover {
+.save-button:hover ,.next-btn:hover{
   background-color: #ff4c4c;
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(255, 107, 107, 0.7);
@@ -104,7 +104,22 @@ label {
   margin-bottom: 20px;
   text-align: center;
 }
+.step-heading {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #fff;
+}
 
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap:3px;
+}
+
+.button-group button {
+  min-width: 100px;
+}
 
 /* Keyframes for slideUp animation */
 @keyframes slideUp {
