@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate for routin
 import "./ProfileDropdown.css";
 import logoImage from "./ProfileIcon.png";
 import { AuthContext } from "./context/AuthContext";
+
+const emailURL = process.env.REACT_APP_EMAIL_URL;
+
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useContext(AuthContext);
@@ -28,10 +31,7 @@ const ProfileDropdown = () => {
     navigate("/order-history"); // Navigate to the Orders page
   };
   const handleEmail = () => {
-window.open(
-  "https://mail.google.com/mail/?view=cm&fs=1&to=rr9589@srmist.edu.in",
-  "_blank"
-);  };
+window.open(emailURL, "_blank");  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {

@@ -4,6 +4,8 @@ import "./ShopkeeperProfileDropdown.css"; // New CSS file for Shopkeeper dropdow
 import logoImage from "./ProfileIcon.png"; // Profile image/logo
 import { AuthContext } from "./context/AuthContext";
 
+const emailURL = process.env.REACT_APP_EMAIL_URL;
+
 const ShopkeeperProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
@@ -26,12 +28,15 @@ const ShopkeeperProfileDropdown = () => {
   const handleDashboard = () => {
     navigate("/dashboard"); // Navigate to the Dashboard page
   };
-    const handleEmail = () => {
-      window.open(
-        "https://mail.google.com/mail/?view=cm&fs=1&to=rr9589@srmist.edu.in",
-        "_blank"
-      );
-    };
+  const handleInsights=() =>{
+    navigate("/insights");
+  }
+  const handleEmail = () => {
+    window.open(
+      emailURL,
+      "_blank"
+    );
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -72,8 +77,11 @@ const ShopkeeperProfileDropdown = () => {
           </button>
           <button
             className="shopkeeper-dropdown-button"
-            onClick={handleEmail}
+            onClick={handleInsights}
           >
+            Insights
+          </button>
+          <button className="shopkeeper-dropdown-button" onClick={handleEmail}>
             Help
           </button>
           <button className="shopkeeper-dropdown-button" onClick={handleLogout}>

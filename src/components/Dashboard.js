@@ -3,6 +3,8 @@ import ShopkeeperProfileDropdown from "./ShopkeeperProfileDropdown"; // Import t
 import "./Dashboard.css"; // Separate CSS for shopkeeper dashboard
 import { AuthContext } from "./context/AuthContext";
 
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+
 const ShopkeeperDashboard = () => {
   const { auth } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +29,7 @@ const ShopkeeperDashboard = () => {
     try {
       console.log("Username:", username);
       const response = await fetch(
-        `http://localhost:5000/api/shopkeeper/${username}/activity`
+        `${baseURL}/api/shopkeeper/${username}/activity`
       );
 
       if (!response.ok) {
@@ -52,7 +54,7 @@ const handleCheckboxChange = async (event) => {
   // Update activity status in the backend
   try {
     const response = await fetch(
-      `http://localhost:5000/api/shopkeeper/${username}/activity`,
+      `${baseURL}/api/shopkeeper/${username}/activity`,
       {
         method: "PUT",
         headers: {
@@ -80,7 +82,7 @@ const handleCheckboxChange = async (event) => {
       const fetchOrders = async () => {
         try {
           const response = await fetch(
-            `http://localhost:5000/api/shopkeeper/orders/${username}`
+            `${baseURL}/api/shopkeeper/orders/${username}`
           );
           if (!response.ok) {
             throw new Error("Failed to fetch orders");
@@ -113,7 +115,7 @@ const handleCheckboxChange = async (event) => {
   const handleStatusChange = async (payment_id, newStatus) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/shopkeeper/orders/${payment_id}/status`,
+        `${baseURL}/api/shopkeeper/orders/${payment_id}/status`,
         {
           method: "PUT",
           headers: {

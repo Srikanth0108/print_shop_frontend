@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown"; // Import ProfileDropdown
 import {useNavigate } from "react-router-dom"; // Import Link for navigation
 import "./Shops.css"; // Shops specific styling
+
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); // Get location object
@@ -11,7 +14,7 @@ const Shops = () => {
   useEffect(() => {
     const fetchShopData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/shops"); // Replace with your actual API endpoint
+        const response = await fetch(`${baseURL}/api/shops`); // Replace with your actual API endpoint
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -31,7 +34,7 @@ const Shops = () => {
   );
   const handleOrderButtonClick = async (shop) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/shop/${shop.username}/activity`);
+      const response = await fetch(`${baseURL}/api/shop/${shop.username}/activity`);
       const data = await response.json();
 
       if (response.ok) {

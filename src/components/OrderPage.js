@@ -5,6 +5,9 @@ import ProfileDropdown from "./ProfileDropdown";
 import del from "./icons8-delete-20.png";
 import { PDFDocument } from 'pdf-lib';
 import { AuthContext } from "./context/AuthContext";
+
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+
 const OrderPage = () => {
   const { auth } = useContext(AuthContext);
   const { shopName } = useParams();
@@ -32,7 +35,7 @@ const OrderPage = () => {
     const fetchShopPrices = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/shops/${shopName}/prices`
+          `${baseURL}/api/shops/${shopName}/prices`
         );
         if (!response.ok) throw new Error("Failed to fetch shop prices");
 

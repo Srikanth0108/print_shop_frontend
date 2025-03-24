@@ -15,6 +15,7 @@ import PreviewPage from "./components/PreviewPage";
 import OrderHistory from "./components/OrdersHistory";
 import Dashboard from "./components/Dashboard";
 import ShopkeeperProfile from "./components/ShopkeeperProfile";
+import Insights from "./components/Insights";
 import ResetPassword from "./components/ResetPassword";
 import ThankYouPage from "./components/ThankYouPage";
 import "./App.css";
@@ -78,6 +79,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/insights"
+              element={
+                <PrivateRoute>
+                  <Insights />
                 </PrivateRoute>
               }
             />

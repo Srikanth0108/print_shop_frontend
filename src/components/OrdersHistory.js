@@ -1,7 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown"; // Import ProfileDropdown
 import "./OrderHistory.css"; // Reuse styles from Shops.css
+import ChatbotStudent from "./ChatbotStudent"; // Import ChatbotStudent
 import { AuthContext } from "./context/AuthContext";
+
+const baseURL = process.env.REACT_APP_BACKEND_URL;
 
 const OrderHistory = () => {
   const { auth } = useContext(AuthContext);
@@ -15,7 +18,7 @@ const OrderHistory = () => {
       try {
         // Update the fetch URL to include the username
         const response = await fetch(
-          `http://localhost:5000/api/orders/${username}`
+          `${baseURL}/api/orders/${username}`
         ); // API to fetch orders
         const data = await response.json();
         console.log("Fetched data:", data);
@@ -123,6 +126,7 @@ const OrderHistory = () => {
               </tbody>
             </table>
           </div>
+          <ChatbotStudent/>
         </>
       )}
     </div>

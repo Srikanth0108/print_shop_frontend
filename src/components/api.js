@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api/auth', // Ensure this matches your backend URL
+  baseURL: `${process.env.REACT_APP_BACKEND_URL}/api/auth`, // Ensure this matches your backend URL
 });
 
 // Add a request interceptor to include the token if available

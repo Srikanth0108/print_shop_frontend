@@ -3,6 +3,8 @@ import ShopkeeperProfileDropdown from "./ShopkeeperProfileDropdown"; // Import t
 import "./ShopkeeperProfile.css"; // Separate CSS for shopkeeper profile
 import { AuthContext } from "./context/AuthContext"; // Import AuthContext
 
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+
 const ShopkeeperProfile = () => {
   const { auth } = useContext(AuthContext);
   const [shopDescription, setShopDescription] = useState("");
@@ -30,7 +32,7 @@ const ShopkeeperProfile = () => {
     const fetchShopkeeperProfile = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/shopkeeper/profile?username=${username}`
+          `${baseURL}/api/shopkeeper/profile?username=${username}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch shopkeeper profile");
@@ -125,16 +127,13 @@ const ShopkeeperProfile = () => {
     console.log("Sending data:", requestData);
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/shopkeeper/profile`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestData),
-        }
-      );
+      const response = await fetch(`${baseURL}/api/shopkeeper/profile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to update shopkeeper profile");
@@ -210,10 +209,10 @@ const ShopkeeperProfile = () => {
 
         {step === 2 && (
           <>
-            <h2 className="step-heading">Grayscale Printing Prices</h2>
+            <h2 className="step-heading">Black & white Printing Prices</h2>
             <form>
               <div className="form-group">
-                <label htmlFor="Black & white A1">Grayscale A1</label>
+                <label htmlFor="Black & white A1">Black & white A1</label>
                 <input
                   type="number"
                   id="grayscaleA1"
@@ -224,7 +223,7 @@ const ShopkeeperProfile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="Black & white A2">Grayscale A2</label>
+                <label htmlFor="Black & white A2">Black & white A2</label>
                 <input
                   type="number"
                   id="grayscaleA2"
@@ -235,7 +234,7 @@ const ShopkeeperProfile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="Black & white A3">Grayscale A3</label>
+                <label htmlFor="Black & white A3">Black & white A3</label>
                 <input
                   type="number"
                   id="grayscaleA3"
@@ -246,7 +245,7 @@ const ShopkeeperProfile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="Black & white A4">Grayscale A4</label>
+                <label htmlFor="Black & white A4">Black & white A4</label>
                 <input
                   type="number"
                   id="grayscaleA4"
@@ -257,7 +256,7 @@ const ShopkeeperProfile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="Black & white A5">Grayscale A5</label>
+                <label htmlFor="Black & white A5">Black & white A5</label>
                 <input
                   type="number"
                   id="grayscaleA5"
@@ -268,7 +267,7 @@ const ShopkeeperProfile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="Black & white A6">Grayscale A6</label>
+                <label htmlFor="Black & white A6">Black & white A6</label>
                 <input
                   type="number"
                   id="grayscaleA6"

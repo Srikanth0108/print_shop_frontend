@@ -5,6 +5,8 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import axios from "axios"; // For backend interaction
 import "./PreviewPage.css"; // Include CSS for styling
 
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+
 const PreviewPage = () => {
   const location = useLocation(); // Get the state passed from OrderPage
   const navigate = useNavigate(); // Initialize useNavigate
@@ -67,7 +69,7 @@ const PreviewPage = () => {
       };
 
       // Send order details to your backend
-await axios.post("http://localhost:5000/api/save-order", orderData);
+await axios.post(`${baseURL}/api/save-order`, orderData);
 
       // Navigate to thank you page or confirmation page after successful "payment"
       navigate("/thank-you-page", { state: { paymentId, total,shopName } });
